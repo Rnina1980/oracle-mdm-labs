@@ -1,14 +1,13 @@
-🧩 Oracle MDM & SQL Learning Labs
+📘 Oracle SQL & MDM Learning Labs
+A beginner-friendly journey learning SQL, data quality, and Oracle database concepts
 
-Hands-on Oracle 23ai Free environment for practicing real MDM (Master Data Management) and SQL DBA fundamentals.
+This repository documents my hands-on learning progress with:
 
-🔹 What this repo contains
+Oracle 23ai CDB/PDB architecture
 
-This repository documents my journey learning:
+Basic SQL querying
 
-Oracle CDB/PDB architecture
-
-SQL schema design
+Schema design
 
 Primary & Foreign Keys
 
@@ -20,104 +19,88 @@ GROUP BY + HAVING
 
 Window functions (ROW_NUMBER)
 
-De-duplication logic
+Simple de-duplication logic
 
-Real MDM data-quality workflows
+Intro to MDM-style data quality concepts
 
-Everything is built inside Oracle 23ai Free using a PDB (FREEPDB1)—just like real enterprise systems.
+I am learning everything from scratch and building my skills through labs inside a real Oracle environment.
 
-🧱 Lab 1 — CDB / PDB Architecture
+📂 Repository Structure
+oracle-mdm-labs/
+│
+├── lab1-cdb-pdb/
+│   ├── lab1-notes.md
+│
+├── lab2-schema/
+│   ├── lab2-notes.md
+│   ├── lab2.sql
+│
+├── lab3-data-quality/
+│   ├── lab3-notes.md
+│   ├── lab3.sql
+│
+└── README.md
 
-How to check the instance
+🧪 Lab Descriptions
+Lab 1 — CDB/PDB Basics
 
-How to view pluggable databases
+Learned what a Container Database (CDB) is
 
-Understanding OPEN READ WRITE vs READ ONLY
+Learned what a Pluggable Database (PDB) is
 
-Why MDM apps run in a PDB
+Checked instance and open modes
 
-Connected using:
+Switched between CDBROOT and FREEPDB1
 
-sql sys/oracle@localhost:1521/freepdb1 as sysdba
+Understood why apps run in a PDB
 
-🧱 Lab 2 — Schema Design
+Lab 2 — Schema Design
 
-Created a full employee table with constraints:
+Created simple tables
 
-create table employees (
-  id number primary key,
-  name varchar2(50) not null,
-  salary number check (salary > 0),
-  department varchar2(20)
-);
+Added Primary & Foreign Keys
 
+Used sequences
 
-Created a sequence for auto-increment IDs:
+Learned how constraints work
 
-create sequence emp_seq start with 1 increment by 1;
+Cleaned up inconsistent data
 
-🧱 Lab 3 — Referential Integrity
+Lab 3 — Joins & Data Quality Checks
 
-Built a departments table:
+Practiced INNER JOINs
 
-create table departments (
-  dept_id number primary key,
-  dept_name varchar2(50) not null
-);
+Used GROUP BY + HAVING
 
+Learned ROW_NUMBER
 
-Inserted data and created a foreign key linking employees → departments.
+Removed duplicate rows cleanly
 
-🧱 Lab 4 — Joins, Aggregations, Window Functions
+🛠️ Tools I’m Learning
 
-Examples performed:
+Oracle Database 23ai Free
 
-Inner Join
-select e.id, e.name, d.dept_id, d.dept_name
-from employees e
-join departments d
-on e.department = d.dept_name;
+SQL*Plus
 
-GROUP BY + HAVING
-select name, count(*)
-from employees
-group by name
-having count(*) > 1;
+Linux terminal
 
-FIND + DELETE duplicate rows
-row_number() over (partition by name order by id)
+Git & GitHub
 
+🎯 Why I Built This Repo
 
-Then deleted duplicates using ROWID.
+I'm building real hands-on skills to support my long-term goals in:
 
-🔥 Why this matters (MDM context)
+Cybersecurity
 
-In real Master Data Management, your job is to:
+Identity management
 
-Remove duplicates
+Data integrity
 
-Apply data quality rules
+SQL and database fundamentals
 
-Maintain referential integrity
+This repo shows my progress as I learn — step by step.
 
-Clean inconsistent data
-
-Ensure master records (customers, employees, assets) are correct
-
-These labs directly map to real MDM job responsibilities.
-
-📌 Next Steps
-
-Add more SQL practice
-
-Add PL/SQL procedures
-
-Build a full MDM workflow
-
-Add scripts for automation
-
-📫 Contact
+👤 Author
 
 Rafael Nina
-Cybersecurity & Linux Engineer | Data & MDM Enthusiast
-LinkedIn: https://www.linkedin.com/in/rafaelnina/
+Cybersecurity & Linux Engineer, improving technical depth every day.
